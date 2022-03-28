@@ -71,6 +71,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 keymap("t", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
+keymap("n", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
 
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 -- keymap(
@@ -86,6 +87,8 @@ keymap("n", "<S-f>", ":Format<cr>", opts)
 --split
 keymap("n", "<C-x>", ":vsplit<cr>", opts)
 -- quit
-keymap("n", "<leader>q", "<cmd>q<cr>", term_opts)
+keymap("n", "<leader>q", "<cmd>q<cr>", opts)
 -- buffers
--- keymap("n", "<leader>q", "<cmd>Telescope buffers<cr>", term_opts)
+keymap("n", "<C-s>", "<cmd>w<cr>", opts)
+
+keymap("n", "<C-q>", "<cmd>Bdelete!<cr>", opts)

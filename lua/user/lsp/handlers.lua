@@ -37,10 +37,9 @@ M.setup = function()
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
 	})
-
-	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	-- 	border = "rounded",
-	-- })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "rounded",
+	})
 end
 
 local function lsp_highlight_document(client)
@@ -96,6 +95,9 @@ M.on_attach = function(client, bufnr) -- set formatting default when 2 lsp activ
 		client.resolved_capabilities.document_formatting = false
 	end
 	if client.name == "html" then
+		client.resolved_capabilities.document_formatting = false
+	end
+	if client.name == "jsonls" then
 		client.resolved_capabilities.document_formatting = false
 	end
 	lsp_keymaps(bufnr)

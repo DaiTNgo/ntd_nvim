@@ -1,11 +1,5 @@
-require("lualine").setup({
-	options = {
-		-- ... your lualine config
-		theme = "tokyonight",
-		-- ... your lualine config
-	},
-})
 vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme doom-one]])
 -- night storm day
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal" }

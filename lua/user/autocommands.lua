@@ -18,10 +18,15 @@ vim.cmd([[
     autocmd VimResized * tabdo wincmd = 
   augroup end
 
-   augroup _lsp
-     autocmd!
-     autocmd BufWritePre * lua vim.lsp.buf.formatting()
+   " augroup _lsp
+   "   autocmd!
+   "   autocmd BufWritePre * lua vim.lsp.buf.formatting()
+   " augroup end
+
+    augroup JsonToJsonc 
+     autocmd! FileType json set filetype=jsonc
    augroup end
+
 ]])
 --[[
   augroup _markdown
@@ -35,18 +40,3 @@ vim.cmd([[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 ]]
-
---  Autoformat
--- require("null-ls").setup({
---     -- you can reuse a shared lspconfig on_attach callback here
---     on_attach = function(client)
---         if client.resolved_capabilities.document_formatting then
---             vim.cmd([[
---             augroup LspFormatting
---                 autocmd! * <buffer>
---                 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
---             augroup END
---             ]])
---         end
---     end,
--- })

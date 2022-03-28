@@ -44,11 +44,6 @@ lsp_installer.on_server_ready(function(server)
 		opts = vim.tbl_deep_extend("force", cssmd_opts, opts)
 	end
 
-	-- if server.name == "eslint" then
-	-- 	local eslint_opts = require("user.lsp.settings.eslint")
-	-- 	opts = vim.tbl_deep_extend("force", eslint_opts, opts)
-	-- end
-
 	if server.name == "quick_lint_js" then
 		local js_opts = require("user.lsp.settings.quick_lint_js")
 		opts = vim.tbl_deep_extend("force", js_opts, opts)

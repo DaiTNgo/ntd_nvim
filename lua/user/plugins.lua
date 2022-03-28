@@ -62,6 +62,7 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
 	use("nvim-lualine/lualine.nvim") -- use theme
+	use("romgrk/doom-one.vim")
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -96,6 +97,8 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("p00f/nvim-ts-rainbow")
 
+	-- Prettier
+	use("MunifTanjim/prettier.nvim")
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	-- Auto Close Tags
