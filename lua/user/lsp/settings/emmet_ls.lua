@@ -1,5 +1,5 @@
 return {
-	settings = {
-      filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
-    },
+  settings = {
+    filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
+  },
 }

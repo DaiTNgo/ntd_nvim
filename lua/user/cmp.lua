@@ -135,15 +135,19 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	window = {
+		documentation = "native",
 	},
+	-- documentation = {
+	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	-- },
+
 	experimental = {
 		ghost_text = true,
 		-- native_menu = false,
 	},
 	view = {
-		entries = "custom", -- can be "custom", "wildmenu" or "native"
+		entries = "native", -- can be "custom", "wildmenu" or "native"
 	},
 	-- sorting = {
 	-- 	priority_weight = 2,

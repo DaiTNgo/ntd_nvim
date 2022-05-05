@@ -58,6 +58,7 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
 	-- colorizer
+use "RRethy/vim-illuminate"
 	use("norcalli/nvim-colorizer.lua")
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
@@ -72,7 +73,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 	-- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-	-- use("onsails/lspkind-nvim")
+	use("onsails/lspkind-nvim")
 	use("ray-x/lsp_signature.nvim")
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -103,6 +104,7 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	-- Auto Close Tags
 	use("windwp/nvim-ts-autotag")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
