@@ -53,7 +53,7 @@ cmp.setup({
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
-	mapping = {
+	mapping ={
 		-- move down and up in popup show suggestion
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -91,8 +91,8 @@ cmp.setup({
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
 			else
-				luasnip.jump(-1)
 				fallback()
 			end
 		end, {
@@ -105,11 +105,6 @@ cmp.setup({
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-
-			-- if entry.source.name == "cmp_tabnine" then
-			-- 	vim_item.kind = ""
-			-- end
 
 			vim_item.menu = ({
 				path = "[Path]",
@@ -117,7 +112,6 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVIM_LUA]",
-				-- cmp_tabnine = "[TabNine]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -129,52 +123,21 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-		-- { name = "cmp_tabnine" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-	window = {
-		documentation = "native",
-	},
-	-- documentation = {
-	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	-- },
+    window = {
+        documentation = cmp.config.window.bordered()
+    },
 
 	experimental = {
 		ghost_text = true,
-		-- native_menu = false,
+		native_menu = false,
 	},
-	view = {
-		entries = "native", -- can be "custom", "wildmenu" or "native"
-	},
-	-- sorting = {
-	-- 	priority_weight = 2,
-	-- 	comparators = {
-	-- 		compare.offset,
-	-- 		compare.exact,
-	-- 		require("cmp_tabnine.compare"),
-	-- 		compare.score,
-	-- 		compare.recently_used,
-	-- 		compare.kind,
-	-- 		compare.sort_text,
-	-- 		compare.length,
-	-- 		compare.order,
-	-- 	},
+	-- view = {
+	-- 	entries = "native", -- can be "custom", "wildmenu" or "native"
 	-- },
 })
---
--- local tabnine = require("cmp_tabnine.config")
--- tabnine:setup({
--- 	max_lines = 1000,
--- 	max_num_results = 20,
--- 	sort = true,
--- 	run_on_every_keystroke = true,
--- 	snippet_placeholder = "..",
--- 	ignored_file_types = { -- default is not to ignore
--- 		-- uncomment to ignore in lua:
--- 		-- lua = true
--- 		-- html = true
--- 	},
--- })
+

@@ -82,7 +82,7 @@ keymap("n", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
 -- )
 -- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 -- Nvimtree
--- keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<S-f>", ":Format<cr>", opts)
 --split
 keymap("n", "<C-x>", ":vsplit<cr>", opts)

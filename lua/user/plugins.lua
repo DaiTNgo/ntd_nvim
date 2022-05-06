@@ -72,9 +72,19 @@ use "RRethy/vim-illuminate"
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-	-- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use("onsails/lspkind-nvim")
-	use("ray-x/lsp_signature.nvim")
+
+--  For vsnip users.
+use 'hrsh7th/cmp-vsnip'
+use 'hrsh7th/vim-vsnip'
+
+-- For ultisnips users.
+use 'SirVer/ultisnips'
+use 'quangnguyen30192/cmp-nvim-ultisnips'
+
+--  For snippy users.
+use 'dcampos/nvim-snippy'
+use 'dcampos/cmp-snippy'
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
