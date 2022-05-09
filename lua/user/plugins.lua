@@ -58,7 +58,7 @@ return packer.startup(function(use)
   use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
   use("folke/which-key.nvim")
   -- colorizer
-  use "RRethy/vim-illuminate"
+  -- use "RRethy/vim-illuminate"
   use("norcalli/nvim-colorizer.lua")
   -- Colorschemes
   use("folke/tokyonight.nvim")
@@ -73,6 +73,7 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
   use("onsails/lspkind-nvim")
+  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
   --  For vsnip users.
   use 'hrsh7th/cmp-vsnip'

@@ -1,7 +1,12 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
+
+local compare = require('cmp.config.compare')
+
 if not cmp_status_ok then
   return
 end
+
+local lspkind = require('lspkind')
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
@@ -45,6 +50,15 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
+
+local source_mapping = {
+  path = "[Path]",
+  buffer = "[Buffer]",
+  luasnip = "[Snippet]",
+  cmp_tabnine = "[TN]",
+  nvim_lsp = "[LSP]",
+  nvim_lua = "[NVIM_LUA]",
+}
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
@@ -53,7 +67,7 @@ cmp.setup({
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     -- move down and up in popup show suggestion
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -99,28 +113,57 @@ cmp.setup({
       "i",
       "s",
     }),
+  }),
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      compare.recently_used,
+      compare.order,
+      compare.offset,
+      compare.exact,
+      compare.score,
+      require('cmp_tabnine.compare'),
+      compare.kind,
+      compare.sort_text,
+      compare.length,
+    },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
+    -- format = function(entry, vim_item)
+    --   -- Kind icons
+    --   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+    --
+    --   vim_item.menu = ({
+    --     path = "[Path]",
+    --     buffer = "[Buffer]",
+    --     luasnip = "[Snippet]",
+    --     nvim_lsp = "[LSP]",
+    --     nvim_lua = "[NVIM_LUA]",
+    --     cmp_tabnine = "[TN]"
+    --   })[entry.source.name]
+    --   return vim_item
+    -- end,
     format = function(entry, vim_item)
-      -- Kind icons
+      -- vim_item.kind = lspkind.presets.default[vim_item.kind]
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-
-      vim_item.menu = ({
-        path = "[Path]",
-        buffer = "[Buffer]",
-        luasnip = "[Snippet]",
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[NVIM_LUA]",
-      })[entry.source.name]
+      local menu = source_mapping[entry.source.name]
+      if entry.source.name == 'cmp_tabnine' then
+        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+          menu = entry.completion_item.data.detail .. ' ' .. menu
+        end
+        vim_item.kind = ''
+      end
+      vim_item.menu = menu
       return vim_item
-    end,
+    end
   },
 
   sources = {
     { name = "path" },
     { name = "buffer" },
     { name = "luasnip" },
+    { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
   },
@@ -136,7 +179,23 @@ cmp.setup({
     ghost_text = true,
     native_menu = false,
   },
-  -- view = {
-  -- 	entries = "native", -- can be "custom", "wildmenu" or "native"
-  -- },
+  view = {
+    entries = "native", -- can be "custom", "wildmenu" or "native"
+  },
+})
+
+local tabnine = require('cmp_tabnine.config')
+tabnine:setup({
+  max_lines = 1000;
+  max_num_results = 20;
+  sort = true;
+  run_on_every_keystroke = true;
+  snippet_placeholder = '..';
+  ignored_file_types = { -- default is not to ignore
+    -- uncomment to ignore in lua:
+    -- lua = true,
+    css = true;
+    html = true;
+  };
+  show_prediction_strength = false;
 })
