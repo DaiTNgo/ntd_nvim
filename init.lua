@@ -23,7 +23,23 @@ require("user.whichkey")
 require("user.autocommands")
 require("user.autoclosetag")
 --[[
+c : copy in nvim tree
+p : paste
+shift + r : refresh tree
 ctrl + o : tab previous
 ctrl + r : redo
+zz:center
+ctrl+e:move screen down
+ctrl+y:move screen up
+.     : repeat last command
+*     : find character under cursor
+
+--[insert mode]--
+
+ctrl+w:  delete word
+ctrl+h:  delete character before
+ctrl+j:  new line
+ctrl+n:next complete
+ctrl+p:previouse complete
 --]]
 

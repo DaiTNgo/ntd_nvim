@@ -53,10 +53,10 @@ local kind_icons = {
 
 local source_mapping = {
   path = "[Path]",
+  nvim_lsp = "[LSP]",
+  cmp_tabnine = "[TN]",
   buffer = "[Buffer]",
   luasnip = "[Snippet]",
-  cmp_tabnine = "[TN]",
-  nvim_lsp = "[LSP]",
   nvim_lua = "[NVIM_LUA]",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
@@ -69,11 +69,11 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     -- move down and up in popup show suggestion
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
+    -- ["<C-k>"] = cmp.mapping.select_prev_item(),
+    -- ["<C-j>"] = cmp.mapping.select_next_item(),
     -- unknow
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+    -- ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+    -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     -- show suggestion
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 
@@ -114,20 +114,20 @@ cmp.setup({
       "s",
     }),
   }),
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      compare.recently_used,
-      compare.order,
-      compare.offset,
-      compare.exact,
-      compare.score,
-      require('cmp_tabnine.compare'),
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-    },
-  },
+  -- sorting = {
+  --   priority_weight = 2,
+  --   comparators = {
+  --     require('cmp_tabnine.compare'),
+  --     compare.kind,
+  --     compare.exact,
+  --     compare.score,
+  --     compare.offset,
+  --     compare.order,
+  --     compare.recently_used,
+  --     compare.sort_text,
+  --     compare.length,
+  --   },
+  -- },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     -- format = function(entry, vim_item)
@@ -163,8 +163,8 @@ cmp.setup({
     { name = "path" },
     { name = "buffer" },
     { name = "luasnip" },
-    { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
+    { name = "cmp_tabnine" },
     { name = "nvim_lua" },
   },
   confirm_opts = {
