@@ -26,6 +26,7 @@ require("user.autoclosetag")
 c : copy in nvim tree
 p : paste
 shift + r : refresh tree
+shift + s : insert indentline
 ctrl + o : tab previous
 ctrl + r : redo
 zz:center

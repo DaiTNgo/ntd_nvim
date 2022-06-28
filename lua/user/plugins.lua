@@ -59,8 +59,10 @@ return packer.startup(function(use)
   use("folke/which-key.nvim")
   -- colorizer
   -- use "RRethy/vim-illuminate"
-  use("norcalli/nvim-colorizer.lua")
+  -- use("norcalli/nvim-colorizer.lua")
   -- Colorschemes
+
+  use("GlennLeo/cobalt2")
   use("folke/tokyonight.nvim")
   use("nvim-lualine/lualine.nvim") -- use theme
   use("romgrk/doom-one.vim")
@@ -73,12 +75,15 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
   use("onsails/lspkind-nvim")
-  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
+  use {'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
+  -- snippets
   --  For vsnip users.
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-
+  use {'dsznajder/vscode-es7-javascript-react-snippets',
+    run = 'yarn install --frozen-lockfile && yarn compile'
+  }
   -- For ultisnips users.
   use 'SirVer/ultisnips'
   use 'quangnguyen30192/cmp-nvim-ultisnips'
@@ -86,7 +91,6 @@ return packer.startup(function(use)
   --  For snippy users.
   use 'dcampos/nvim-snippy'
   use 'dcampos/cmp-snippy'
-  -- snippets
   use("L3MON4D3/LuaSnip") --snippet engine
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
