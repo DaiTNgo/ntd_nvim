@@ -112,9 +112,9 @@ keymap("n", "<S-f>", ":Format<cr>", opts)
 --split
 keymap("n", "<C-x>", ":vsplit<cr>", opts)
 -- quit
-keymap("n", "<leader>w", "<cmd>q<cr>", opts)
+keymap("n", "<leader>q", "<cmd>q<cr>", opts)
 -- buffers
 keymap("n", "<C-s>", "<cmd>w<cr>", opts)
 
-keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
+keymap("n", "<leader>w", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>r", "<cmd>NvimTreeRefresh<cr>", opts)
