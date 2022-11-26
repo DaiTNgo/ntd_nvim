@@ -69,7 +69,7 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	keymap(bufnr, "n", "<F8>", "<cmd>lua vim.diagnostic.goto_next({border = rounded })<CR>", opts)
-	keymap(bufnr, "n", "<F8>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	keymap(bufnr, "n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)

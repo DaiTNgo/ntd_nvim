@@ -36,13 +36,22 @@
 --   on_highlights = function(highlights, colors) end,
 -- })
 -- local colorscheme = "tokyonight-moon"
-    local colorscheme = "OceanicNext"
--- vim.cmd "hi Normal guibg=NONE ctermbg=NONE"
--- vim.cmd "hi LineNr guibg=NONE ctermbg=NONE"
--- vim.cmd "hi SignColumn guibg=NONE ctermbg=NONE"
--- vim.cmd "hi EndOfBuffer guibg=NONE ctermbg=NONE"
+local colorscheme = "cobalt2"
+--
+--
+-- Darkplus ---------------
+-- local colorscheme = "darkplus"
+-- vim.g.onedarker_italic_keywords = false
+--
+-- vim.g.onedarker_italic_functions = false
+--
+-- vim.g.onedarker_italic_comments = true
+--
+-- vim.g.onedarker_italic_loops = false
+--
+-- vim.g.onedarker_italic_conditionals = false
+
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
-  return
+	return
 end
-

@@ -6,8 +6,7 @@ local opts = { silent = true }
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
--- Modes
---   normal_mode = "n",
+-- Modes normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
 --   visual_block_mode = "x",
@@ -15,7 +14,7 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 -- Normal --
-keymap("n", "m", "%", opts)
+-- keymap("n", "m", "%", opts)
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)

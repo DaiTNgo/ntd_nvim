@@ -3,10 +3,12 @@ local servers = {
 	"cssls",
 	"html",
 	"tsserver",
-	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
+	"eslint",
+	"cssmodules_ls",
+	"emmet_ls",
 }
 
 local settings = {

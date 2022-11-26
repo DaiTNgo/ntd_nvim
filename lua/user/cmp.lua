@@ -43,13 +43,19 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+-- vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
-
+	completion = {
+		autocomplete = false,
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -97,26 +103,57 @@ cmp.setup({
 		format = function(entry, vim_item)
 			vim_item.kind = kind_icons[vim_item.kind]
 			vim_item.menu = ({
-				nvim_lsp = "",
-				nvim_lua = "",
-				luasnip = "",
-				buffer = "",
-				path = "",
-				emoji = "",
+				copilot = "",
+				nvim_lsp = "lsp",
+				nvim_lua = "",
+				luasnip = "",
+				buffer = "﬘",
+				path = "path",
+				emoji = "ﲃ",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
+	-- order
 	sources = {
+		{
+			name = "copilot",
+			trigger_characters = {
+				{
+					".",
+					":",
+					"(",
+					"'",
+					'"',
+					"[",
+					",",
+					"#",
+					"*",
+					"@",
+					"|",
+					"=",
+					"-",
+					"{",
+					"/",
+					"\\",
+					"+",
+					"?",
+					" ",
+					-- "\t",
+					-- "\n",
+				},
+			},
+		},
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
+		{ name = "path" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
-		{ name = "path" },
+		{ name = "emoji" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
-		select = false,
+		select = true, --false
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
@@ -124,5 +161,8 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true,
+	},
+	view = {
+		entries = "native",
 	},
 })
