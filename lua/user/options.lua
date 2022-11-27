@@ -46,5 +46,4 @@ vim.opt.foldlevel = 999
 vim.opt.spell = true
 vim.opt.spelllang = "en,cjk"
 vim.opt.spellsuggest = "best"
-vim.opt.spc = "hl-SpellLocal"
-vim.opt.spo = "camel"
+vim.opt.spo = "camel,noplainbuffer"

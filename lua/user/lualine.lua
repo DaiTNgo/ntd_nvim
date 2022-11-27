@@ -12,7 +12,7 @@ local diagnostics = {
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
-	colored = true,
+	colored = false,
 	always_visible = true,
 }
 
@@ -25,7 +25,7 @@ local diff = {
 
 local filetype = {
 	"filetype",
-	icons_enabled = false,
+	icons_enabled = true,
 }
 
 local location = {

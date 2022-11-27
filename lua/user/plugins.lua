@@ -131,6 +131,7 @@ return packer.startup(function(use)
 	-- 	end,
 	-- })
 	use({ "windwp/nvim-ts-autotag" })
+	use({ "Pocco81/auto-save.nvim" })
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
