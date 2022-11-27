@@ -124,12 +124,12 @@ return packer.startup(function(use)
 	-- Put this at the end after all plugins
 
 	-- Show Error Custom
-	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = function()
-			require("lsp_lines").setup()
-		end,
-	})
+	-- use({
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- })
 	use({ "windwp/nvim-ts-autotag" })
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

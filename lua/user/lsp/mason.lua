@@ -8,7 +8,7 @@ local servers = {
 	"yamlls",
 	"eslint",
 	"cssmodules_ls",
-	"emmet_ls",
+	"tailwindcss",
 }
 
 local settings = {

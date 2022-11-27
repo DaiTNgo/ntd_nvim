@@ -43,18 +43,17 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
--- vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
+	-- completion = {
+	-- 	autocomplete = true,
+	-- },
 	completion = {
-		autocomplete = false,
+		keyword_length = 1,
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -103,12 +102,10 @@ cmp.setup({
 		format = function(entry, vim_item)
 			vim_item.kind = kind_icons[vim_item.kind]
 			vim_item.menu = ({
-				copilot = "",
-				nvim_lsp = "lsp",
-				nvim_lua = "",
-				luasnip = "",
+				nvim_lsp = "Lsp",
 				buffer = "﬘",
-				path = "path",
+				luasnip = "⋗",
+				path = "Path",
 				emoji = "ﲃ",
 			})[entry.source.name]
 			return vim_item
@@ -116,53 +113,25 @@ cmp.setup({
 	},
 	-- order
 	sources = {
-		{
-			name = "copilot",
-			trigger_characters = {
-				{
-					".",
-					":",
-					"(",
-					"'",
-					'"',
-					"[",
-					",",
-					"#",
-					"*",
-					"@",
-					"|",
-					"=",
-					"-",
-					"{",
-					"/",
-					"\\",
-					"+",
-					"?",
-					" ",
-					-- "\t",
-					-- "\n",
-				},
-			},
-		},
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
 		{ name = "path" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
+		{ name = "luasnip", keyword_length = 2 },
 		{ name = "emoji" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
-		select = true, --false
+		select = false, --false
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
+		native_menu = false,
 	},
-	view = {
-		entries = "native",
-	},
+	-- view = {
+	-- 	entries = "native",
+	-- },
 })

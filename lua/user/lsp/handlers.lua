@@ -22,12 +22,19 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = false, -- disable virtual text
+		virtual_text = {
+			format = function(diagnostic)
+				if diagnostic.severity == vim.diagnostic.severity.ERROR then
+					return string.format("E: %s", diagnostic.message)
+				end
+				return diagnostic.message
+			end,
+		}, -- disable virtual text
 		signs = {
 			active = signs, -- show signs
 		},
 		update_in_insert = true,
-		underline = true,
+		underline = true, --default: true
 		severity_sort = true,
 		float = {
 			focusable = true,
