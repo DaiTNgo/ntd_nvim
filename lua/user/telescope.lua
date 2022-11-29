@@ -15,6 +15,9 @@ telescope.setup({
 			width = 0.95,
 			height = 0.95,
 		},
+		preview = {
+			timeout = 400,
+		},
 		mappings = {
 			i = {
 				["<Down>"] = actions.cycle_history_next,

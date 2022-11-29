@@ -54,6 +54,7 @@ cmp.setup({
 	-- },
 	completion = {
 		keyword_length = 1,
+		autocomplete = true,
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping.select_prev_item(),

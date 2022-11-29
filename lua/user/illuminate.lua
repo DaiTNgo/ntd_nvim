@@ -18,7 +18,7 @@ illuminate.configure({
 		"treesitter",
 		"regex",
 	},
-	delay = 200,
+	delay = 100,
 	filetypes_denylist = {
 		"dirvish",
 		"fugitive",

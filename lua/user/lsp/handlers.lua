@@ -24,9 +24,9 @@ M.setup = function()
 	local config = {
 		virtual_text = {
 			format = function(diagnostic)
-				if diagnostic.severity == vim.diagnostic.severity.ERROR then
-					return string.format("E: %s", diagnostic.message)
-				end
+				-- if diagnostic.severity == vim.diagnostic.severity.ERROR then
+				-- 	return string.format("E: %s", diagnostic.message)
+				-- end
 				return diagnostic.message
 			end,
 		}, -- disable virtual text
