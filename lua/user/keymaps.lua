@@ -75,39 +75,30 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 -- Move text up and down
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+-- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+-- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+-- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+-- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
+-- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
+-- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+-- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
+-- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
+-- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", opts)
+-- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
+-- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
+--
+-- keymap("t", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
+-- keymap("n", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
 
-keymap("t", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
-keymap("n", "<C-\\>", "<cmd>ToggleTermToggleAll<cr>", opts)
-
--- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
--- keymap(
--- 	"n",
--- 	"<leader>f",
--- 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
--- 	opts
--- )
--- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<S-f>", ":Format<cr>", opts)
+-- keymap("n", "<S-f>", ":Format<cr>", opts)
 --split
 keymap("n", "<C-x>", ":vsplit<cr>", opts)
 -- quit
@@ -117,3 +108,6 @@ keymap("n", "<C-s>", "<cmd>w<cr>", opts)
 
 keymap("n", "<leader>w", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>r", "<cmd>NvimTreeRefresh<cr>", opts)
+
+-- let g:copilot_no_tab_map = v:true
+-- imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")

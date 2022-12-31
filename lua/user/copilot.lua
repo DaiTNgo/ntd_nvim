@@ -1,4 +1,4 @@
-vim.cmd([[highlight CopilotSuggestion guifg=#555555 ctermfg=8]])
+vim.cmd([[highlight CopilotSuggestion guifg=#888666 ctermfg=8]])
 local status_ok, copilot = pcall(require, "copilot")
 if not status_ok then
 	return

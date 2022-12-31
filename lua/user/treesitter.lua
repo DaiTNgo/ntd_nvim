@@ -11,14 +11,15 @@ end
 configs.setup({
 	ensure_installed = {
 		"lua",
-		"markdown",
-		"markdown_inline",
-		"bash",
+		-- "markdown",
+		-- "markdown_inline",
+		-- "bash",
 		"javascript",
 		"typescript",
 		"css",
 		"scss",
 		"html",
+		"rust",
 	}, -- put the language you want in this array
 	-- ensure_installed = "all", -- one of "all" or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
@@ -26,7 +27,7 @@ configs.setup({
 
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "css" }, -- list of language that will be disabled
+		-- disable = { "css" }, -- list of language that will be disabled
 	},
 	autopairs = {
 		enable = true,
@@ -48,5 +49,8 @@ configs.setup({
 		max_file_lines = nil, -- Do not enable for files with more than n lines, int
 		colors = { "#BCD441", "#FFA17A", "#E9E922", "#FF6F91", "#00B0B1", "#6E96C9" }, -- table of hex strings
 		-- termcolors = {} -- table of colour name strings
+	},
+	playground = {
+		enable = true,
 	},
 })

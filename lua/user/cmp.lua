@@ -9,7 +9,6 @@ if not snip_status_ok then
 end
 
 require("luasnip/loaders/from_vscode").lazy_load()
-
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -49,14 +48,18 @@ cmp.setup({
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
-	-- completion = {
-	-- 	autocomplete = true,
-	-- },
 	completion = {
 		keyword_length = 1,
-		autocomplete = true,
+		-- autocomplete = true,
 	},
 	mapping = cmp.mapping.preset.insert({
+		-- ["<C-g>"] = cmp.mapping(function(fallback)
+		-- 	vim.api.nvim_feedkeys(
+		-- 		vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
+		-- 		"n",
+		-- 		true
+		-- 	)
+		-- end),
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -103,22 +106,23 @@ cmp.setup({
 		format = function(entry, vim_item)
 			vim_item.kind = kind_icons[vim_item.kind]
 			vim_item.menu = ({
-				nvim_lsp = "Lsp",
+				nvim_lsp = "[Lsp]",
 				buffer = "﬘",
 				luasnip = "⋗",
 				path = "Path",
 				emoji = "ﲃ",
+				-- cmp_tabnine = "[TN]",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 	-- order
 	sources = {
-		{ name = "nvim_lsp", keyword_length = 3 },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "nvim_lsp" },
+		-- { name = "cmp_tabnine" },
+		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "luasnip", keyword_length = 2 },
-		{ name = "emoji" },
+		{ name = "luasnip" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -129,10 +133,18 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	experimental = {
-		ghost_text = false,
-		native_menu = false,
+		ghost_text = true,
 	},
-	-- view = {
-	-- 	entries = "native",
-	-- },
+	view = {
+		entries = "native",
+	},
 })
+
+-- local tabnine = require("cmp_tabnine.config")
+-- tabnine:setup({
+-- 	max_lines = 1000,
+-- 	max_num_results = 20,
+-- 	sort = true,
+-- 	run_on_every_keystroke = true,
+-- 	snippet_placeholder = "..",
+-- })
